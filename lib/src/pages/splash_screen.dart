@@ -44,12 +44,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-               Image.asset('assets/img/playtec.png'),
-               Image.asset('assets/img/first_animation.gif')
+               Image.asset('assets/img/playtec.png')
             ],
           ),
           
-          ),
+        ),
       ),
     );
   }

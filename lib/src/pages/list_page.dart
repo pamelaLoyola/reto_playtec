@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -30,9 +31,6 @@ class _ListPageState extends State<ListPage> {
       users.add(user);
     }
 
-
-    print(users.length);
-
     return users;
   }
 
@@ -53,6 +51,7 @@ class _ListPageState extends State<ListPage> {
         padding: EdgeInsets.all(15.0),
 
         child: FutureBuilder(
+
           future: _getUsers(),
           builder: (BuildContext context, AsyncSnapshot snapshot){
 
@@ -60,25 +59,35 @@ class _ListPageState extends State<ListPage> {
 
               return Container(
                 decoration: BoxDecoration(
+
                   image: DecorationImage(
-                    image: AssetImage("assets/img/load_gift.gif")
+                    image: AssetImage("assets/img/load_icon.png")
                   ),
                 ),
+
                 child: Center(
                   child: Column( 
                     mainAxisAlignment: MainAxisAlignment.center, 
                     children: <Widget>[
+
                       SizedBox(height: 60.0,),
                       Text('cargando', style: GoogleFonts.nunito(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w400
-                      ),)
-                      ],),),
+                      ),
+                      )
+                    ],
+                  ),
+                ),
               );
+            
             }else{
+
               return ListView.builder(
+
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index){
+
                   return Card(
 
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
@@ -91,11 +100,7 @@ class _ListPageState extends State<ListPage> {
                         subtitle: Text(snapshot.data[index].website),
                         trailing: Icon(Icons.keyboard_arrow_right ),
                         onTap: (){
-
-                          Navigator.push(context,
-
-                            CupertinoPageRoute(builder: (context) => DetailPage(
-                              snapshot.data[index]))
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => DetailPage(snapshot.data[index]))
                           );
                         },
                     ),
